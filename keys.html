@@ -11,7 +11,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">🔥 ZEFIUM HUB</div>
-            <ul class="nav-links">
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="scripts.html">SCRIPTS</a></li>
                 <li><a href="keys.html" class="active">KEYS</a></li>
@@ -27,17 +28,6 @@
         </div>
     </section>
 
-    <!-- Modal pour afficher la clé -->
-    <div id="keyModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Votre Clé Unique</h2>
-            <div class="key-display" id="keyDisplay"></div>
-            <button class="copy-btn" onclick="copyToClipboard()">COPIER LA CLÉ</button>
-            <p class="key-info">Cette clé est unique et personnelle. Ne la partagez pas!</p>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Zefium Hub. Tous droits réservés.</p>
@@ -46,18 +36,18 @@
     <script src="script.js"></script>
     <script>
         const games = [
-            { name: 'Blox Fruits', icon: '🍎', color: '#FF6B35' },
-            { name: 'Speed Simulator', icon: '🏃', color: '#FF8C42' },
-            { name: 'Clicker Tycoon', icon: '💰', color: '#FFB340' },
-            { name: 'Prison Life', icon: '🔐', color: '#FFA630' },
-            { name: 'Build a Boat', icon: '🚤', color: '#FF7F50' },
-            { name: 'Mining Simulator', icon: '⛏️', color: '#FF9500' },
-            { name: 'Combat Warriors', icon: '⚔️', color: '#FF6347' },
-            { name: 'Jailbreak', icon: '🚗', color: '#FF8C00' },
-            { name: 'Adopt Me', icon: '🐶', color: '#FFA07A' },
-            { name: 'Tower of Hell', icon: '🏢', color: '#FF7F50' },
-            { name: 'Brookhaven', icon: '🏠', color: '#FF6B6B' },
-            { name: 'Royale High', icon: '👑', color: '#FF69B4' }
+            { name: 'Blox Fruits', icon: '🍎', color: '#FF6B35', keyId: 1 },
+            { name: 'Speed Simulator', icon: '🏃', color: '#FF8C42', keyId: 2 },
+            { name: 'Clicker Tycoon', icon: '💰', color: '#FFB340', keyId: 3 },
+            { name: 'Prison Life', icon: '🔐', color: '#FFA630', keyId: 4 },
+            { name: 'Build a Boat', icon: '🚤', color: '#FF7F50', keyId: 5 },
+            { name: 'Mining Simulator', icon: '⛏️', color: '#FF9500', keyId: 6 },
+            { name: 'Combat Warriors', icon: '⚔️', color: '#FF6347', keyId: 7 },
+            { name: 'Jailbreak', icon: '🚗', color: '#FF8C00', keyId: 8 },
+            { name: 'Adopt Me', icon: '🐶', color: '#FFA07A', keyId: 9 },
+            { name: 'Tower of Hell', icon: '🏢', color: '#FF7F50', keyId: 10 },
+            { name: 'Brookhaven', icon: '🏠', color: '#FF6B6B', keyId: 11 },
+            { name: 'Royale High', icon: '👑', color: '#FF69B4', keyId: 12 }
         ];
 
         const grid = document.getElementById('gamesGrid');
@@ -69,56 +59,86 @@
                 <div class="game-card-inner">
                     <div class="game-icon">${game.icon}</div>
                     <h3>${game.name}</h3>
-                    <button class="unlock-btn" onclick="unlockKey('${game.name}')">DÉVERROUILLER</button>
+                    <button class="unlock-btn" onclick="unlockKey('${game.name}', ${game.keyId})">DÉVERROUILLER</button>
                 </div>
             `;
             grid.appendChild(card);
         });
 
-        function generateKey() {
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            let key = '';
-            for (let i = 0; i < 16; i++) {
-                key += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            return key.match(/.{1,4}/g).join('-');
+        function unlockKey(gameName, keyId) {
+            // La clé statique pour ce jeu
+            const key = `Zefium${keyId}`;
+            
+            // Ouvrir Linkvertise dans une nouvelle fenêtre
+            const linkvertiseUrl = 'https://linkvertise.com/';
+            
+            // Créer une nouvelle fenêtre
+            const newWindow = window.open(linkvertiseUrl, '_blank', 'width=800,height=600');
+            
+            // Vérifier si la fenêtre a été fermée
+            let checkClosed = setInterval(() => {
+                if (newWindow && newWindow.closed) {
+                    clearInterval(checkClosed);
+                    
+                    // Redirection avec la clé dans l'URL
+                    const gameLink = getGameLink(gameName);
+                    if (gameLink) {
+                        window.open(`${gameLink}?key=${key}`, '_blank');
+                    }
+                    
+                    // Afficher une notification avec la clé
+                    showKeyNotification(key, gameName);
+                }
+            }, 500);
         }
 
-        function unlockKey(gameName) {
-            // Rediriger vers Linkvertise (simulé)
-            const linkvertiseUrl = 'https://linkvertise.com/redirect';
-            const returnUrl = `${window.location.origin}${window.location.pathname}?key=${gameName}`;
+        function getGameLink(gameName) {
+            const links = {
+                'Blox Fruits': 'https://www.roblox.com/games/2753915549',
+                'Speed Simulator': 'https://www.roblox.com/games/3624418149',
+                'Clicker Tycoon': 'https://www.roblox.com/games/5346789551',
+                'Prison Life': 'https://www.roblox.com/games/41157023',
+                'Build a Boat': 'https://www.roblox.com/games/1311225089',
+                'Mining Simulator': 'https://www.roblox.com/games/3720677267',
+                'Combat Warriors': 'https://www.roblox.com/games/10449761463',
+                'Jailbreak': 'https://www.roblox.com/games/606849621',
+                'Adopt Me': 'https://www.roblox.com/games/920587237',
+                'Tower of Hell': 'https://www.roblox.com/games/1220701524',
+                'Brookhaven': 'https://www.roblox.com/games/5513172899',
+                'Royale High': 'https://www.roblox.com/games/2414198484'
+            };
+            return links[gameName] || null;
+        }
+
+        function showKeyNotification(key, gameName) {
+            const notification = document.createElement('div');
+            notification.className = 'key-notification';
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <h3>Clé Déverrouillée! 🎉</h3>
+                    <p><strong>${gameName}</strong></p>
+                    <div class="key-box">
+                        <code>${key}</code>
+                        <button onclick="copyKey('${key}')">📋 COPIER</button>
+                    </div>
+                    <p class="key-warning">Clé copiée! Elle a été automatiquement envoyée au jeu.</p>
+                </div>
+            `;
+            document.body.appendChild(notification);
             
-            // Ouvrir Linkvertise
-            const window1 = window.open(linkvertiseUrl, '_blank');
-            
-            // Simuler la vérification après un délai
             setTimeout(() => {
-                const key = generateKey();
-                document.getElementById('keyDisplay').innerHTML = `<code>${key}</code>`;
-                document.getElementById('keyModal').style.display = 'flex';
-                
-                // Stocker la clé localement
-                localStorage.setItem(`key_${gameName}`, key);
-            }, 2000);
+                notification.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 5000);
         }
 
-        function closeModal() {
-            document.getElementById('keyModal').style.display = 'none';
-        }
-
-        function copyToClipboard() {
-            const keyCode = document.querySelector('#keyDisplay code').textContent;
-            navigator.clipboard.writeText(keyCode);
-            alert('Clé copiée!');
-        }
-
-        // Fermer le modal en cliquant en dehors
-        window.onclick = function(event) {
-            const modal = document.getElementById('keyModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
+        function copyKey(key) {
+            navigator.clipboard.writeText(key);
+            alert('Clé copiée: ' + key);
         }
     </script>
 </body>
