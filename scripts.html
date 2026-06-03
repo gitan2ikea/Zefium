@@ -11,7 +11,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">🔥 ZEFIUM HUB</div>
-            <ul class="nav-links">
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="scripts.html" class="active">SCRIPTS</a></li>
                 <li><a href="keys.html">KEYS</a></li>
@@ -21,7 +22,8 @@
 
     <!-- Scripts Section -->
     <section class="scripts-section">
-        <h1 class="section-title">NOS SCRIPTS</h1>
+        <h1 class="section-title">NOS SCRIPTS PREMIUM</h1>
+        <p class="section-subtitle">Scripts exclusifs pour optimiser ton gameplay</p>
         <div class="scripts-container" id="scriptsContainer">
             <!-- Les scripts seront chargés par JavaScript -->
         </div>
@@ -29,28 +31,118 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Zefium Hub. Tous droits réservés.</p>
+        <p>&copy; 2024 Zefium Hub. Tous droits réservés. | Scripts Premium Roblox</p>
     </footer>
 
     <script src="script.js"></script>
     <script>
         const scripts = [
-            { name: 'Auto Farm', game: 'Blox Fruits', description: 'Farm automatique pour tous les fruits' },
-            { name: 'Speed Simulator', game: 'Speed Simulator', description: 'Vitesse maximale et boost infini' },
-            { name: 'Tycoon Clicker', game: 'Clicker Tycoon', description: 'Augmentez vos gains automatiquement' },
-            { name: 'Prison Break', game: 'Prison Life', description: 'Échappez facilement de prison' },
-            { name: 'Admin Commands', game: 'Build a Boat', description: 'Commandes admin complètes' },
-            { name: 'Infinite Coins', game: 'Mining Simulator', description: 'Pièces infinies et niveau max' },
-            { name: 'Combat Plus', game: 'Combat Warriors', description: 'Combat amélioré et dégâts boost' },
-            { name: 'Fly Hack', game: 'Jailbreak', description: 'Volez librement dans tout le jeu' }
+            { 
+                name: 'Auto Farm Blox', 
+                game: 'Blox Fruits', 
+                description: 'Farm automatique pour tous les fruits avec boost de niveau',
+                icon: '🍎'
+            },
+            { 
+                name: 'Fruit Auto Sell', 
+                game: 'Blox Fruits', 
+                description: 'Vente automatique des fruits à meilleur prix',
+                icon: '💰'
+            },
+            { 
+                name: 'Combat Enhancer', 
+                game: 'Blox Fruits', 
+                description: 'Améliore tes stats de combat avec IA intelligente',
+                icon: '⚔️'
+            },
+            { 
+                name: 'Tycoon Auto Clicker', 
+                game: 'Clicker Tycoon', 
+                description: 'Augmentez vos gains automatiquement - 10x plus rapide',
+                icon: '💎'
+            },
+            { 
+                name: 'Tycoon Profit Max', 
+                game: 'Clicker Tycoon', 
+                description: 'Débloque tous les niveaux et multiplicateurs premium',
+                icon: '🚀'
+            },
+            { 
+                name: 'Prison Escape Pro', 
+                game: 'Prison Life', 
+                description: 'Échappez facilement de prison avec routes débloquées',
+                icon: '🔐'
+            },
+            { 
+                name: 'Build Master', 
+                game: 'Build a Boat', 
+                description: 'Pièces infinies et constructions instantanées',
+                icon: '🏗️'
+            },
+            { 
+                name: 'Mining Infinite', 
+                game: 'Mining Simulator', 
+                description: 'Pièces infinies et niveau max instantanément',
+                icon: '⛏️'
+            },
+            { 
+                name: 'Combat Warrior', 
+                game: 'Combat Warriors', 
+                description: 'Combat amélioré avec dégâts boost et invincibilité',
+                icon: '🗡️'
+            },
+            { 
+                name: 'Jailbreak Flybot', 
+                game: 'Jailbreak', 
+                description: 'Vol libre et teleportation instantanée',
+                icon: '🚗'
+            },
+            { 
+                name: 'Pet Master', 
+                game: 'Adopt Me', 
+                description: 'Débloque tous les animaux et améliorations premium',
+                icon: '🐶'
+            },
+            { 
+                name: 'Tower Climber', 
+                game: 'Tower of Hell', 
+                description: 'Grimpe la tour 100x plus rapidement',
+                icon: '🏢'
+            },
+            { 
+                name: 'Royale Ultimate', 
+                game: 'Royale High', 
+                description: 'Outfit complet et collectibles exclusifs',
+                icon: '👑'
+            },
+            { 
+                name: 'Brookhaven Life', 
+                game: 'Brookhaven', 
+                description: 'Maisons déblocquées et items premium gratuits',
+                icon: '🏠'
+            },
+            { 
+                name: 'Speed Racer Max', 
+                game: 'Speed Simulator', 
+                description: 'Vitesse maximale et voitures rares débloquées',
+                icon: '🏎️'
+            },
+            { 
+                name: 'Speed Drift Pro', 
+                game: 'Speed Simulator', 
+                description: 'Drift parfait automatique et records cassés',
+                icon: '⚡'
+            }
         ];
 
         const container = document.getElementById('scriptsContainer');
-        scripts.forEach(script => {
+        scripts.forEach((script, index) => {
             const card = document.createElement('div');
             card.className = 'script-card';
+            card.style.animationDelay = (index * 0.05) + 's';
             card.innerHTML = `
                 <div class="card-inner">
+                    <div class="script-icon">${script.icon}</div>
                     <h3>${script.name}</h3>
                     <p class="game-name">${script.game}</p>
                     <p class="description">${script.description}</p>

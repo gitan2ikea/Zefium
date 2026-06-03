@@ -11,7 +11,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">🔥 ZEFIUM HUB</div>
-            <ul class="nav-links">
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html" class="active">HOME</a></li>
                 <li><a href="scripts.html">SCRIPTS</a></li>
                 <li><a href="keys.html">KEYS</a></li>
@@ -29,6 +30,7 @@
                 <div class="box-inner">SCRIPTS PREMIUM</div>
             </div>
             <a href="scripts.html" class="cta-button">DÉCOUVRIR LES SCRIPTS</a>
+            <a href="keys.html" class="cta-button cta-button-secondary">OBTENIR UNE CLÉ</a>
         </div>
     </section>
 
@@ -50,18 +52,45 @@
                 <h3>PREMIUM</h3>
                 <p>Scripts exclusifs pour tous les jeux Roblox</p>
             </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌟</div>
+                <h3>EXCLUSIF</h3>
+                <p>Accès à des scripts que tu ne trouveras nulle part ailleurs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">12+</div>
+                <div class="stat-label">JEUX SUPPORTÉS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">SCRIPTS DISPONIBLES</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">UTILISATEURS ACTIFS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">SUPPORT EN LIGNE</div>
+            </div>
         </div>
     </section>
 
     <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
+    <div class="scroll-indicator" id="scrollIndicator">
         <span>SCROLL DOWN</span>
         <div class="mouse-wheel"></div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2024 Zefium Hub. Tous droits réservés.</p>
+        <p>&copy; 2024 Zefium Hub. Tous droits réservés. | Scripts Premium Roblox</p>
     </footer>
 
     <script src="script.js"></script>
