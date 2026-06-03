@@ -1,3 +1,27 @@
+// Mobile menu toggle
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Fermer le menu en cliquant sur un lien
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // Fermer le menu en cliquant en dehors
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-container')) {
+            navLinks.classList.remove('active');
+        }
+    });
+}
+
 // Smooth scrolling for links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -32,6 +56,16 @@ window.addEventListener('scroll', () => {
     parallaxElements.forEach(element => {
         element.style.transform = `translateY(${scrolled * 0.5}px)`;
     });
+
+    // Show scroll indicator only on desktop
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator && window.innerWidth > 768) {
+        if (scrolled > 100) {
+            scrollIndicator.classList.remove('show');
+        } else {
+            scrollIndicator.classList.add('show');
+        }
+    }
 });
 
 // Add animation on scroll
@@ -54,7 +88,7 @@ document.querySelectorAll('.script-card, .game-card, .feature-card').forEach(el 
 });
 
 // Add hover effects to buttons
-document.querySelectorAll('.cta-button, .get-key-btn, .unlock-btn, .copy-btn').forEach(button => {
+document.querySelectorAll('.cta-button, .get-key-btn, .unlock-btn').forEach(button => {
     button.addEventListener('click', function() {
         this.style.transform = 'scale(0.98)';
         setTimeout(() => {
@@ -66,17 +100,10 @@ document.querySelectorAll('.cta-button, .get-key-btn, .unlock-btn, .copy-btn').f
 // Add keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        const modal = document.getElementById('keyModal');
-        if (modal) {
-            modal.style.display = 'none';
+        const navLinks = document.getElementById('navLinks');
+        if (navLinks) {
+            navLinks.classList.remove('active');
         }
-    }
-});
-
-// Add scroll-to-top button functionality
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        document.body.style.scrollBehavior = 'smooth';
     }
 });
 
@@ -95,6 +122,7 @@ function showNotification(message, type = 'info') {
         animation: slideIn 0.3s ease-out;
         font-weight: bold;
         box-shadow: 0 0 20px rgba(255, 107, 53, 0.6);
+        max-width: 90vw;
     `;
     notification.textContent = message;
     document.body.appendChild(notification);
@@ -136,3 +164,16 @@ if (!document.querySelector('style[data-animations]')) {
     `;
     document.head.appendChild(style);
 }
+
+// Detect mobile device
+function isMobileDevice() {
+    return window.innerWidth <= 768;
+}
+
+// Adjust for mobile-specific behaviors
+window.addEventListener('resize', () => {
+    const navLinks = document.getElementById('navLinks');
+    if (!isMobileDevice() && navLinks) {
+        navLinks.classList.remove('active');
+    }
+});
