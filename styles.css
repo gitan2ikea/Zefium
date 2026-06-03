@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
@@ -25,16 +29,16 @@ body {
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem;
 }
 
 .logo {
-    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
     font-weight: bold;
     background: linear-gradient(135deg, #FF6B35, #FFB340);
     -webkit-background-clip: text;
@@ -42,19 +46,30 @@ body {
     background-clip: text;
     text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
     letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #FFB340;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1001;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: clamp(1rem, 2vw, 2rem);
 }
 
 .nav-links a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
     position: relative;
     transition: 0.3s;
     letter-spacing: 1px;
@@ -86,6 +101,7 @@ body {
     overflow: hidden;
     margin-top: 60px;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2a1a1a 100%);
+    padding: 2rem;
 }
 
 .stars {
@@ -114,6 +130,7 @@ body {
     z-index: 10;
     text-align: center;
     animation: fadeInDown 1s ease-out;
+    max-width: 100%;
 }
 
 @keyframes fadeInDown {
@@ -128,14 +145,14 @@ body {
 }
 
 .hero-title {
-    font-size: 5rem;
+    font-size: clamp(2rem, 8vw, 5rem);
     font-weight: 900;
     background: linear-gradient(135deg, #FF6B35, #FFB340, #FF6B35);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
-    margin-bottom: 1rem;
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
     letter-spacing: 3px;
     animation: glow 3s ease-in-out infinite;
 }
@@ -146,8 +163,8 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
-    margin-bottom: 3rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: clamp(1.5rem, 3vw, 3rem);
     color: #FFB340;
     letter-spacing: 1px;
     animation: fadeInUp 1s ease-out 0.3s both;
@@ -165,9 +182,9 @@ body {
 }
 
 .hero-3d-box {
-    width: 200px;
-    height: 200px;
-    margin: 2rem auto;
+    width: clamp(120px, 30vw, 200px);
+    height: clamp(120px, 30vw, 200px);
+    margin: clamp(1rem, 2vw, 2rem) auto;
     perspective: 1000px;
     animation: fadeInUp 1s ease-out 0.6s both;
 }
@@ -181,7 +198,7 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
     border-radius: 10px;
     box-shadow: 
         0 0 30px rgba(255, 107, 53, 0.6),
@@ -198,14 +215,14 @@ body {
 
 .cta-button {
     display: inline-block;
-    padding: 1rem 2.5rem;
+    padding: clamp(0.6rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2.5rem);
     background: linear-gradient(135deg, #FF6B35, #FFB340);
     color: #000;
     text-decoration: none;
     border: none;
     border-radius: 50px;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
     cursor: pointer;
     transition: 0.3s;
     box-shadow: 0 0 30px rgba(255, 107, 53, 0.6);
@@ -224,18 +241,17 @@ body {
 
 /* ===== FEATURES SECTION ===== */
 .features {
-    padding: 4rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 2vw, 2rem);
+    max-width: 1400px;
+    margin: clamp(2rem, 3vw, 4rem) auto;
     background: linear-gradient(135deg, rgba(255, 107, 53, 0.05), rgba(255, 179, 64, 0.05));
     border-radius: 20px;
-    margin: 4rem 2rem;
 }
 
 .features-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: clamp(1.5rem, 2vw, 2rem);
     animation: fadeIn 1s ease-out;
 }
 
@@ -246,7 +262,7 @@ body {
 
 .feature-card {
     background: rgba(255, 107, 53, 0.1);
-    padding: 2rem;
+    padding: clamp(1.5rem, 2vw, 2rem);
     border-radius: 15px;
     text-align: center;
     border: 2px solid #FF6B35;
@@ -261,35 +277,36 @@ body {
 }
 
 .feature-icon {
-    font-size: 3rem;
+    font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 1rem;
 }
 
 .feature-card h3 {
     color: #FFB340;
     margin-bottom: 1rem;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
     letter-spacing: 1px;
 }
 
 .feature-card p {
     color: #ccc;
     line-height: 1.6;
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
 }
 
 /* ===== SCRIPTS SECTION ===== */
 .scripts-section {
-    padding: 4rem 2rem;
+    padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 2vw, 2rem);
     margin-top: 80px;
-    max-width: 1200px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .section-title {
     text-align: center;
-    font-size: 3rem;
-    margin-bottom: 3rem;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    margin-bottom: clamp(1.5rem, 3vw, 3rem);
     background: linear-gradient(135deg, #FF6B35, #FFB340);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -300,14 +317,14 @@ body {
 .scripts-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: clamp(1.5rem, 2vw, 2rem);
 }
 
 .script-card {
     background: rgba(255, 107, 53, 0.1);
     border: 2px solid #FF6B35;
     border-radius: 15px;
-    padding: 2rem;
+    padding: clamp(1.5rem, 2vw, 2rem);
     transition: 0.3s;
     box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
     cursor: pointer;
@@ -345,12 +362,12 @@ body {
 .script-card h3 {
     color: #FFB340;
     margin-bottom: 0.5rem;
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
 }
 
 .game-name {
     color: #FF6B35;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
     margin-bottom: 1rem;
     font-weight: bold;
 }
@@ -359,11 +376,12 @@ body {
     color: #ccc;
     margin-bottom: 1.5rem;
     line-height: 1.5;
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
 }
 
 .get-key-btn {
     width: 100%;
-    padding: 0.8rem;
+    padding: clamp(0.6rem, 1vw, 0.8rem);
     background: linear-gradient(135deg, #FF6B35, #FFB340);
     color: #000;
     border: none;
@@ -372,6 +390,7 @@ body {
     cursor: pointer;
     transition: 0.3s;
     letter-spacing: 1px;
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
 }
 
 .get-key-btn:hover {
@@ -381,7 +400,7 @@ body {
 
 /* ===== KEYS SECTION ===== */
 .keys-section {
-    padding: 4rem 2rem;
+    padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 2vw, 2rem);
     margin-top: 80px;
     max-width: 1400px;
     margin-left: auto;
@@ -390,8 +409,8 @@ body {
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: clamp(1rem, 1.5vw, 2rem);
     animation: fadeIn 1s ease-out;
 }
 
@@ -399,7 +418,7 @@ body {
     background: rgba(255, 107, 53, 0.1);
     border: 3px solid #FF6B35;
     border-radius: 15px;
-    padding: 2rem;
+    padding: clamp(1rem, 2vw, 2rem);
     text-align: center;
     transition: 0.3s;
     box-shadow: 0 0 20px rgba(255, 107, 53, 0.2);
@@ -436,7 +455,7 @@ body {
 }
 
 .game-icon {
-    font-size: 3rem;
+    font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 1rem;
     animation: bounce 2s infinite;
 }
@@ -449,13 +468,13 @@ body {
 .game-card h3 {
     color: #FFB340;
     margin-bottom: 1rem;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
     letter-spacing: 1px;
 }
 
 .unlock-btn {
     width: 100%;
-    padding: 0.8rem;
+    padding: clamp(0.6rem, 1vw, 0.8rem);
     background: linear-gradient(135deg, #FF6B35, #FFB340);
     color: #000;
     border: none;
@@ -464,6 +483,7 @@ body {
     cursor: pointer;
     transition: 0.3s;
     letter-spacing: 1px;
+    font-size: clamp(0.8rem, 1rem, 0.9rem);
 }
 
 .unlock-btn:hover {
@@ -471,83 +491,75 @@ body {
     box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
 }
 
-/* ===== MODAL ===== */
-.modal {
-    display: none;
+.unlock-btn:active {
+    transform: scale(0.98);
+}
+
+/* ===== KEY NOTIFICATION ===== */
+.key-notification {
     position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(5px);
-    animation: fadeIn 0.3s;
-}
-
-.modal-content {
-    background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(255, 179, 64, 0.15));
+    bottom: -500px;
+    right: 2rem;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.2), rgba(255, 179, 64, 0.2));
     border: 2px solid #FF6B35;
-    padding: 3rem;
-    border-radius: 15px;
-    text-align: center;
-    max-width: 500px;
-    box-shadow: 0 0 50px rgba(255, 107, 53, 0.8);
-    animation: slideUp 0.3s ease-out;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.close {
-    color: #FFB340;
-    float: right;
-    font-size: 2rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.close:hover {
-    color: #FF6B35;
-}
-
-.modal-content h2 {
-    color: #FFB340;
-    margin-bottom: 2rem;
-    font-size: 1.8rem;
-    letter-spacing: 1px;
-}
-
-.key-display {
-    background: rgba(0, 0, 0, 0.5);
     padding: 2rem;
-    border-radius: 10px;
-    margin-bottom: 2rem;
-    border: 2px solid #FF6B35;
+    border-radius: 15px;
+    z-index: 3000;
+    max-width: 90vw;
+    width: 400px;
+    box-shadow: 0 0 50px rgba(255, 107, 53, 0.8);
+    animation: slideUpNotif 0.4s ease-out forwards;
 }
 
-.key-display code {
+@keyframes slideUpNotif {
+    to {
+        bottom: 2rem;
+    }
+}
+
+.key-notification.show {
+    animation: slideDownNotif 0.4s ease-in forwards;
+}
+
+@keyframes slideDownNotif {
+    to {
+        bottom: -500px;
+    }
+}
+
+.notification-content h3 {
     color: #FFB340;
-    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+}
+
+.notification-content p {
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+}
+
+.key-box {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    border: 2px solid #FF6B35;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+
+.key-box code {
+    color: #FFB340;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
     font-weight: bold;
     letter-spacing: 2px;
     word-break: break-all;
 }
 
-.copy-btn {
-    width: 100%;
-    padding: 1rem;
+.key-box button {
+    padding: 0.6rem 1rem;
     background: linear-gradient(135deg, #FF6B35, #FFB340);
     color: #000;
     border: none;
@@ -555,29 +567,34 @@ body {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
-    letter-spacing: 1px;
-    margin-bottom: 1rem;
+    font-size: clamp(0.8rem, 1.2vw, 0.9rem);
 }
 
-.copy-btn:hover {
+.key-box button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 107, 53, 0.8);
+    box-shadow: 0 0 15px rgba(255, 107, 53, 0.6);
 }
 
-.key-info {
-    color: #FF6B35;
-    font-size: 0.9rem;
-    margin-top: 1rem;
+.key-warning {
+    color: #FFB340;
+    font-size: clamp(0.8rem, 1rem, 0.9rem);
+    margin-top: 0.5rem;
+    font-style: italic;
 }
 
 /* ===== SCROLL INDICATOR ===== */
 .scroll-indicator {
     position: fixed;
     bottom: 3rem;
-    right: 3rem;
+    right: 1.5rem;
     text-align: center;
     z-index: 100;
     animation: float 3s ease-in-out infinite;
+    display: none;
+}
+
+.scroll-indicator.show {
+    display: block;
 }
 
 .scroll-indicator span {
@@ -630,7 +647,7 @@ body {
 .footer {
     background: rgba(10, 10, 10, 0.95);
     border-top: 2px solid #FF6B35;
-    padding: 2rem;
+    padding: clamp(1.5rem, 2vw, 2rem);
     text-align: center;
     color: #ccc;
     margin-top: 4rem;
@@ -639,34 +656,259 @@ body {
 
 .footer p {
     letter-spacing: 1px;
+    font-size: clamp(0.9rem, 1.1vw, 1rem);
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== TABLET RESPONSIVE (768px) ===== */
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 2.5rem;
+    .nav-container {
+        padding: 0.8rem 1rem;
     }
 
-    .hero-subtitle {
-        font-size: 1.1rem;
+    .nav-toggle {
+        display: block;
     }
 
     .nav-links {
+        position: fixed;
+        left: -300px;
+        top: 60px;
+        flex-direction: column;
+        background: rgba(10, 10, 10, 0.98);
+        width: 300px;
+        height: calc(100vh - 60px);
+        padding: 2rem 1rem;
         gap: 1rem;
-        font-size: 0.9rem;
+        transition: 0.3s;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
     }
 
-    .section-title {
-        font-size: 2rem;
+    .nav-links.active {
+        left: 0;
+    }
+
+    .hero {
+        margin-top: 60px;
+        padding: 1rem;
+        min-height: auto;
+        padding-top: 3rem;
+    }
+
+    .hero-3d-box {
+        margin: 1rem auto;
+    }
+
+    .games-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+    }
+
+    .game-card {
+        padding: 1rem 0.8rem;
+    }
+
+    .game-card h3 {
+        font-size: 0.85rem;
+    }
+
+    .unlock-btn {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .features {
+        margin: 2rem 1rem;
+    }
+
+    .features-container {
+        grid-template-columns: 1fr;
+    }
+
+    .key-notification {
+        width: calc(100vw - 2rem);
+        right: 1rem;
+        left: 1rem;
+        max-width: none;
     }
 
     .scroll-indicator {
-        bottom: 1rem;
-        right: 1rem;
+        display: none !important;
+    }
+}
+
+/* ===== MOBILE RESPONSIVE (480px) ===== */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
     }
 
-    .modal-content {
-        padding: 2rem;
-        margin: 2rem;
+    .nav-container {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .nav-toggle {
+        font-size: 1.2rem;
+    }
+
+    .hero {
+        margin-top: 50px;
+        padding: 0.5rem;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-3d-box {
+        width: 100px;
+        height: 100px;
+        margin: 0.8rem auto;
+    }
+
+    .box-inner {
+        font-size: 0.7rem;
+    }
+
+    .cta-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .features {
+        padding: 1.5rem 0.8rem;
+        margin: 1.5rem 0.5rem;
+    }
+
+    .features-container {
+        gap: 1rem;
+    }
+
+    .feature-icon {
+        font-size: 1.8rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+        font-size: 0.8rem;
+    }
+
+    .scripts-section {
+        padding: 1.5rem 0.8rem;
+        margin-top: 50px;
+    }
+
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .scripts-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .script-card {
+        padding: 1rem 0.8rem;
+    }
+
+    .script-card h3 {
+        font-size: 1rem;
+    }
+
+    .game-name {
+        font-size: 0.75rem;
+    }
+
+    .description {
+        font-size: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .get-key-btn {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .keys-section {
+        padding: 1.5rem 0.8rem;
+        margin-top: 50px;
+    }
+
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    .game-card {
+        padding: 0.8rem 0.5rem;
+    }
+
+    .game-icon {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .game-card h3 {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .unlock-btn {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.7rem;
+    }
+
+    .key-notification {
+        width: calc(100vw - 1rem);
+        right: 0.5rem;
+        left: 0.5rem;
+        padding: 1rem;
+        bottom: -400px;
+    }
+
+    .notification-content h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .notification-content p {
+        font-size: 0.85rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .key-box {
+        padding: 0.8rem;
+        margin: 0.8rem 0;
+    }
+
+    .key-box code {
+        font-size: 0.9rem;
+    }
+
+    .key-box button {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.7rem;
+    }
+
+    .footer {
+        padding: 1rem 0.8rem;
+    }
+
+    .footer p {
+        font-size: 0.85rem;
     }
 }
