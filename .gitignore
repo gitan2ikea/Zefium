@@ -1,0 +1,36 @@
+# Logs
+*.log
+*.logs
+
+# Runtime data
+pids/
+*.pid
+*.seed
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Build output
+dist/
+build/

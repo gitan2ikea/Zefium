@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keys - Zefium Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🔥 ZEFIUM HUB</div>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="scripts.html">SCRIPTS</a></li>
+                <li><a href="keys.html" class="active">KEYS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Keys Section -->
+    <section class="keys-section">
+        <h1 class="section-title">DÉVERROUILLEZ VOS CLÉS</h1>
+        <div class="games-grid" id="gamesGrid">
+            <!-- Les jeux seront chargés par JavaScript -->
+        </div>
+    </section>
+
+    <!-- Modal pour afficher la clé -->
+    <div id="keyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Votre Clé Unique</h2>
+            <div class="key-display" id="keyDisplay"></div>
+            <button class="copy-btn" onclick="copyToClipboard()">COPIER LA CLÉ</button>
+            <p class="key-info">Cette clé est unique et personnelle. Ne la partagez pas!</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Zefium Hub. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const games = [
+            { name: 'Blox Fruits', icon: '🍎', color: '#FF6B35' },
+            { name: 'Speed Simulator', icon: '🏃', color: '#FF8C42' },
+            { name: 'Clicker Tycoon', icon: '💰', color: '#FFB340' },
+            { name: 'Prison Life', icon: '🔐', color: '#FFA630' },
+            { name: 'Build a Boat', icon: '🚤', color: '#FF7F50' },
+            { name: 'Mining Simulator', icon: '⛏️', color: '#FF9500' },
+            { name: 'Combat Warriors', icon: '⚔️', color: '#FF6347' },
+            { name: 'Jailbreak', icon: '🚗', color: '#FF8C00' },
+            { name: 'Adopt Me', icon: '🐶', color: '#FFA07A' },
+            { name: 'Tower of Hell', icon: '🏢', color: '#FF7F50' },
+            { name: 'Brookhaven', icon: '🏠', color: '#FF6B6B' },
+            { name: 'Royale High', icon: '👑', color: '#FF69B4' }
+        ];
+
+        const grid = document.getElementById('gamesGrid');
+        games.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'game-card';
+            card.style.borderTopColor = game.color;
+            card.innerHTML = `
+                <div class="game-card-inner">
+                    <div class="game-icon">${game.icon}</div>
+                    <h3>${game.name}</h3>
+                    <button class="unlock-btn" onclick="unlockKey('${game.name}')">DÉVERROUILLER</button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        function generateKey() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let key = '';
+            for (let i = 0; i < 16; i++) {
+                key += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return key.match(/.{1,4}/g).join('-');
+        }
+
+        function unlockKey(gameName) {
+            // Rediriger vers Linkvertise (simulé)
+            const linkvertiseUrl = 'https://linkvertise.com/redirect';
+            const returnUrl = `${window.location.origin}${window.location.pathname}?key=${gameName}`;
+            
+            // Ouvrir Linkvertise
+            const window1 = window.open(linkvertiseUrl, '_blank');
+            
+            // Simuler la vérification après un délai
+            setTimeout(() => {
+                const key = generateKey();
+                document.getElementById('keyDisplay').innerHTML = `<code>${key}</code>`;
+                document.getElementById('keyModal').style.display = 'flex';
+                
+                // Stocker la clé localement
+                localStorage.setItem(`key_${gameName}`, key);
+            }, 2000);
+        }
+
+        function closeModal() {
+            document.getElementById('keyModal').style.display = 'none';
+        }
+
+        function copyToClipboard() {
+            const keyCode = document.querySelector('#keyDisplay code').textContent;
+            navigator.clipboard.writeText(keyCode);
+            alert('Clé copiée!');
+        }
+
+        // Fermer le modal en cliquant en dehors
+        window.onclick = function(event) {
+            const modal = document.getElementById('keyModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

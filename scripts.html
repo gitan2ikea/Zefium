@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts - Zefium Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🔥 ZEFIUM HUB</div>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="scripts.html" class="active">SCRIPTS</a></li>
+                <li><a href="keys.html">KEYS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Scripts Section -->
+    <section class="scripts-section">
+        <h1 class="section-title">NOS SCRIPTS</h1>
+        <div class="scripts-container" id="scriptsContainer">
+            <!-- Les scripts seront chargés par JavaScript -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Zefium Hub. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const scripts = [
+            { name: 'Auto Farm', game: 'Blox Fruits', description: 'Farm automatique pour tous les fruits' },
+            { name: 'Speed Simulator', game: 'Speed Simulator', description: 'Vitesse maximale et boost infini' },
+            { name: 'Tycoon Clicker', game: 'Clicker Tycoon', description: 'Augmentez vos gains automatiquement' },
+            { name: 'Prison Break', game: 'Prison Life', description: 'Échappez facilement de prison' },
+            { name: 'Admin Commands', game: 'Build a Boat', description: 'Commandes admin complètes' },
+            { name: 'Infinite Coins', game: 'Mining Simulator', description: 'Pièces infinies et niveau max' },
+            { name: 'Combat Plus', game: 'Combat Warriors', description: 'Combat amélioré et dégâts boost' },
+            { name: 'Fly Hack', game: 'Jailbreak', description: 'Volez librement dans tout le jeu' }
+        ];
+
+        const container = document.getElementById('scriptsContainer');
+        scripts.forEach(script => {
+            const card = document.createElement('div');
+            card.className = 'script-card';
+            card.innerHTML = `
+                <div class="card-inner">
+                    <h3>${script.name}</h3>
+                    <p class="game-name">${script.game}</p>
+                    <p class="description">${script.description}</p>
+                    <button class="get-key-btn" onclick="window.location.href='keys.html'">OBTENIR LA CLÉ</button>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
